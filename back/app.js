@@ -10,6 +10,9 @@ var usersRouter = require('./routes/users');
 var pedidosRouter = require('./routes/pedidos');
 var productosRouter = require('./routes/productos');
 var usuariosRouter = require('./routes/usuarios');
+var authRouter = require('./routes/auth');
+
+var cors = require('cors');
 
 var app = express();
 
@@ -18,11 +21,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/pedidos', pedidosRouter);
 app.use('/productos', productosRouter);
 app.use('/usuarios', usuariosRouter);
+app.use('/auth', authRouter);
 
 module.exports = app;
