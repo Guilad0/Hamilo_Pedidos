@@ -1,17 +1,25 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { useRouter, RouterView } from 'vue-router'
+import Nav from './components/Nav.vue'
+
+const router = useRouter();
 </script>
 
 <template>
+  <div>
   <header>
-    
-    
-
+    <Nav v-if="router.currentRoute.value.path != '/'"  />
   </header>
-    <div>
-      <RouterView />
-    </div>
+
+  <main class="container">
+    <RouterView />
+
+  </main>
+
+  <footer>
+
+  </footer>
+  </div>
 </template>
 
 <style scoped>
