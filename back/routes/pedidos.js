@@ -4,7 +4,11 @@ var router = express.Router();
 var connection = require('../database');
 
 router.get('/', (req, res) => {
-    var query = "SELECT * FROM pedidos";
+    var query = `SELECT pedidos.*, productos.nombre_producto AS producto, usuarios.nombre AS vendedor, usuarios.nombre AS cliente FROM pedidos 
+                INNER JOIN productos
+                ON productos.id = pedidos.producto_id
+                INNER JOIN usuarios
+                ON usuarios.id = pedidos.vendedor_id`;
 
     connection.query(query, (error, results, fields) => {
         if (error) {
