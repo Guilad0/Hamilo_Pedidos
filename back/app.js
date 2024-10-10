@@ -11,6 +11,7 @@ var pedidosRouter = require('./routes/pedidos');
 var productosRouter = require('./routes/productos');
 var usuariosRouter = require('./routes/usuarios');
 var authRouter = require('./routes/auth');
+var users = require('./routes/users');
 
 var cors = require('cors');
 
@@ -29,5 +30,6 @@ app.use('/pedidos', pedidosRouter);
 app.use('/productos', productosRouter);
 app.use('/usuarios', usuariosRouter);
 app.use('/auth', authRouter);
+app.use('/users', users);
 
 module.exports = app;
